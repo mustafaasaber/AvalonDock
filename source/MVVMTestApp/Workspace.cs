@@ -1,4 +1,4 @@
-﻿using AvalonDock.Themes;
+using AvalonDock.Themes;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -124,8 +124,8 @@ namespace AvalonDock.MVVMTestApp
 				{
 					_activeDocument = value;
 					RaisePropertyChanged(nameof(ActiveDocument));
-					if (ActiveDocumentChanged != null)
-						ActiveDocumentChanged(this, EventArgs.Empty);
+					//if (ActiveDocumentChanged != null)
+						//ActiveDocumentChanged(this, EventArgs.Empty);
 				}
 			}
 		}

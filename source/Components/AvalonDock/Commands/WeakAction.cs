@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
@@ -113,8 +113,8 @@ namespace AvalonDock.Commands
 			get
 			{
 #if SILVERLIGHT
-                return (_action != null && _action.Target == null)
-                    || _staticAction != null;
+				return (_action != null && _action.Target == null)
+					|| _staticAction != null;
 #else
 				return _staticAction != null;
 #endif
@@ -256,10 +256,10 @@ namespace AvalonDock.Commands
 				}
 
 #if SILVERLIGHT
-                if (_action != null)
-                {
-                    _action();
-                }
+				if (_action != null)
+				{
+					_action();
+				}
 #endif
 			}
 		}
@@ -275,7 +275,7 @@ namespace AvalonDock.Commands
 			_staticAction = null;
 
 #if SILVERLIGHT
-            _action = null;
+			_action = null;
 #endif
 		}
 
