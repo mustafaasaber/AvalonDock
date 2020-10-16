@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    AvalonDock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -279,7 +279,7 @@ namespace AvalonDock.Controls
 						int i = _tabIndex == -1 ? 0 : _tabIndex;
 						foreach (var anchorableToImport in
 							layoutDocumentPaneGroup.Descendents().OfType<LayoutContent>()
-								.Where(item => allowedDropTypes.Contains(item.GetType())).ToArray())
+								.Where(item => allowedDropTypes.Any(dropType => dropType.IsInstanceOfType(item))).ToArray())
 						{
 							paneModel.Children.Insert(i, anchorableToImport);
 							i++;
@@ -506,7 +506,8 @@ namespace AvalonDock.Controls
 								checkPreviousContainer = false;
 							}
 
-							anchorableToImport.SetCanCloseInternal(true);
+							// BD: 17.08.2020 Remove that bodge and handle CanClose=false && CanHide=true in XAML
+							//anchorableToImport.SetCanCloseInternal(true);
 
 							paneModel.Children.Insert(i, anchorableToImport);
 							i++;

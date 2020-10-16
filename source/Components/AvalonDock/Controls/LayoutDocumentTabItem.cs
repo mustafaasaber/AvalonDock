@@ -1,4 +1,4 @@
-﻿/************************************************************************
+/************************************************************************
    AvalonDock
 
    Copyright (C) 2007-2013 Xceed Software Inc.
@@ -121,6 +121,7 @@ namespace AvalonDock.Controls
 		protected override void OnMouseMove(MouseEventArgs e)
 		{
 			base.OnMouseMove(e);
+			_isMouseDown = Mouse.LeftButton == MouseButtonState.Pressed && _isMouseDown;
 			if (_isMouseDown)
 			{
 				var ptMouseMove = e.GetPosition(this);
@@ -210,7 +211,8 @@ namespace AvalonDock.Controls
 		private void StartDraggingFloatingWindowForContent()
 		{
 			ReleaseMouseCapture();
-			if (Model is LayoutAnchorable layoutAnchorable) layoutAnchorable.ResetCanCloseInternal();
+			// BD: 17.08.2020 Remove that bodge and handle CanClose=false && CanHide=true in XAML
+			//if (Model is LayoutAnchorable layoutAnchorable) layoutAnchorable.ResetCanCloseInternal();
 			var manager = Model.Root.Manager;
 			manager.StartDraggingFloatingWindowForContent(Model);
 		}
